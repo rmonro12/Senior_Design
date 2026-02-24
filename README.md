@@ -20,14 +20,14 @@ William States Lee College of Engineering
 ## File Structure
 **Projector_Control/**
   * **app/**
-      * __init__.py # Python package indicator
-      * gui.py # Web-based user interface (FastAPI)
-      * controller.py # Abstracted projector commands
-      * serial_comm.py # Establish serial connection
+      * `__init__.py` Python package indicator
+      * `gui.py`Web-based user interface (FastAPI)
+      * `controller.py` Abstracted projector commands
+      * `serial_comm.py` Establish serial connection
       * **templates/**
-          * index.html # HTML framework for GUI
+          * `index.html` HTML framework for GUI
   * **display/**
-      * __init__.py # Python package indicator
-      * scene.py # Visualization of decals for projection (PyGame)
-  * requirements.txt # Dependencies list
-  * README.md # Projection documentation
+      * `__init__.py` Python package indicator
+      * `scene.py` Visualization of decals for projection (PyGame)
+  * `requirements.txt` Dependencies list
+  * `README.md` Projection documentation
