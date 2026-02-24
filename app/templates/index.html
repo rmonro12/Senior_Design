@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projector Control</title>
+    </head>
+    <body>
+        <button onclick="sendPowerOn()">Power ON</button>
+        <div id="status" style="margin-top:20px; font-weight:bold;"></div>
+        <script>
+        async function sendPowerOn() {
+            try {
+                const response = await fetch('/power/on', {method: 'POST'});
+                const data = await response.json();
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = data.status;
+                statusDiv.style.color = "green";
+            } 
+            catch (error) {
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = "Error sending command";
+                statusDiv.style.color = "red";
+            }
+        }
+        </script>
+
+        <button onclick="sendPowerOff()">Power OFF</button>
+        <div id="status" style="margin-top:20px; font-weight:bold;"></div>
+        <script>
+        async function sendPowerOff() {
+            try {
+                const response = await fetch('/power/off', {method: 'POST'});
+                const data = await response.json();
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = data.status;
+                statusDiv.style.color = "green";
+            } 
+            catch (error) {
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = "Error sending command";
+                statusDiv.style.color = "red";
+            }
+        }
+        </script>
+
+    </body>
+</html>
