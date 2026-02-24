@@ -3,6 +3,17 @@ from pygame._sdl2.video import Window
 import sys
 import os
 
+class SceneController: # !! WIP !!
+    def move(self, direction):
+        command_map = {
+            "up": "UP_COMMAND",
+            "down": "DOWN_COMMAND",
+            "left": "LEFT_COMMAND",
+            "right": "RIGHT_COMMAND"
+        }
+        print(f"Moving {direction}")
+        #self.send_command(command_map[direction])
+
 def create_window(fullscreen, display_index):
     num_displays = pygame.display.get_num_displays()
     display_index = min(display_index, num_displays - 1)

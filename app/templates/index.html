@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Projector Control</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-rows: 50px 50px;
+            grid-template-columns: 170px;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .grid-container button {
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .empty {
+            visibility: hidden;
+        }
+        </style>
     </head>
     <body>
-        <button onclick="sendPowerOn()">Power ON</button>
         <div id="status" style="margin-top:20px; font-weight:bold;"></div>
+        <h1>Projector Control</h1>
+        <div class="controls">
+        <button onclick="sendPowerOn()">Power ON</button>
         <script>
         async function sendPowerOn() {
             try {
@@ -24,7 +58,7 @@
         </script>
 
         <button onclick="sendPowerOff()">Power OFF</button>
-        <div id="status" style="margin-top:20px; font-weight:bold;"></div>
+        
         <script>
         async function sendPowerOff() {
             try {
@@ -41,6 +75,36 @@
             }
         }
         </script>
+        </div>
+
+        <h1>Directional Controls</h1>
+        <div class="grid-container">
+        <div class="empty"></div>
+        <button onclick="sendMove('up')">↑</button>
+        <div class="empty"></div>
+        <button onclick="sendMove('left')">←</button>
+        <div class="empty"></div>
+        <button onclick="sendMove('right')">→</button>
+        <div class="empty"></div>
+        <button onclick="sendMove('down')">↓</button>
+        <div class="empty"></div>
+        <script>
+        async function sendMove(direction) {
+            try {
+                const response = await fetch(`/move/${direction}`, {method: 'POST'});
+                const data = await response.json();
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = data.status;
+                statusDiv.style.color = "green";
+            } 
+            catch (error) {
+                const statusDiv = document.getElementById("status");
+                statusDiv.innerText = "Error sending command";
+                statusDiv.style.color = "red";
+            }
+        }
+        </script>
+        </div>
 
     </body>
 </html>
