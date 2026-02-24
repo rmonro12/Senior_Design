@@ -1,5 +1,5 @@
 # Senior Design II – FONTAINE_DECAL  
-**University of North Carolina at Charlotte**
+**University of North Carolina at Charlotte**<br>
 William States Lee College of Engineering  
 **Author:** Ryan Monroe  
 
